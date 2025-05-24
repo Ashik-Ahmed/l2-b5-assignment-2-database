@@ -16,3 +16,12 @@ FROM sightings
     JOIN rangers ON sightings.ranger_id = rangers.ranger_id
 GROUP BY
     rangers.name;
+
+-- Problem 5
+SELECT species.common_name
+FROM species
+    LEFT JOIN sightings ON species.species_id = sightings.species_id
+WHERE
+    sightings.species_id IS NULL;
+
+-- Problem 6
