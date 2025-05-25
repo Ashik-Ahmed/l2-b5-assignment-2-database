@@ -1,5 +1,3 @@
-# PostgreSQL Guide in Bengali
-
 ## 1. What is PostgreSQL?
 
 **PostgreSQL** একটি অত্যন্ত পাওয়ারফুল এবং ওপেনসোর্স অবজেক্ট রিলেশনাল ডাটাবেজ ম্যানেজমেন্ট সিস্টেম। ওপেনসোর্স হওয়ার কারণে এর সোর্স কোড উন্মুক্ত এবং সহজেই নিজের চাহিদা অনুযায়ী এই ডেটাবেজ ডাটাবেজ ম্যানেজমেন্ট সিস্টেম কে পরিবর্তন করা সম্ভব। এটি ACID কমপ্লায়েন্ট, এবং এটির উন্নত ফিচার যেমন JSON সাপোর্ট, জিওগ্রাফিক ডাটা হ্যান্ডলিং (PostGIS), কাস্টম ডাটা টাইপ, এবং এক্সটেনসিবিলিটি এর জন্য এটি অন্যান্য RDBMS থেকে এগিয়ে।
@@ -105,7 +103,7 @@ CREATE TABLE example (
 
 ## 5. What is the purpose of the WHERE clause in a SELECT statement?
 
-**WHERE ক্লজ** WHERE ক্লজ ডাটাবেস কোয়েরিতে একটি শর্ত (condition) যোগ করতে ব্যবহৃত হয়, যা শুধুমাত্র সেইসব রেকর্ড/রো রিটার্ন করে যেগুলো নির্দিষ্ট শর্ত পূরণ করে।
+**WHERE ক্লজ** ডাটাবেস কোয়েরিতে একটি শর্ত (condition) যোগ করতে ব্যবহৃত হয়, যা শুধুমাত্র সেইসব রেকর্ড/রো রিটার্ন করে যেগুলো নির্দিষ্ট শর্ত পূরণ করে।
 
 ### মূল কাজ:
 - ডাটা ফিল্টারিং করার জন্য
@@ -126,7 +124,9 @@ WHERE salary > 50000;
 - `NULL` ভ্যালু চেক করা যায় (`IS NULL` / `IS NOT NULL`)
 
 PostgreSQL-এ WHERE ক্লজ অত্যন্ত শক্তিশালী এবং এটি জয়েন, সাবকোয়েরি ও অন্যান্য এডভান্সড অপারেশনের সাথেও ব্যবহার করা যায়।
+
 ---
+
 
 ## 6. What are the LIMIT and OFFSET clauses used for?
 
@@ -182,15 +182,19 @@ SELECT * FROM products LIMIT 10 OFFSET 10;
 UPDATE employees
 SET salary = 60000
 WHERE employee_id = 101;
+```
 (কর্মচারী নং ১০১-এর বেতন ৬০,০০০ টাকায় আপডেট করবে)
 
 #### একাধিক কলাম আপডেট:
+```sql
 UPDATE products
 SET price = 1200, stock = stock - 1
 WHERE product_id = 5;
+```
 (প্রোডাক্ট আইডি ৫-এর দাম ১২০০ টাকা সেট করবে এবং স্টক ১ কমিয়ে দিবে)
 
 #### শর্তসহ আপডেট:
+```sql
 UPDATE customers
 SET membership_status = 'Premium'
 WHERE total_purchases > 100000;
@@ -250,11 +254,6 @@ JOIN customers c ON o.customer_id = c.id
 JOIN products p ON o.product_id = p.id
 WHERE o.order_date > '2023-01-01';
 ```
-
-### PostgreSQL JOIN Execution Methods:
-- Nested Loop Join
-- Hash Join
-- Merge Join
 
 PostgreSQL-এর JOIN অপারেশন ডাটা রিলেশনশিপ এক্সপ্লোর করার জন্য অপরিহার্য একটি টুল, যা সঠিকভাবে ব্যবহার করলে জটিল কোয়েরিকেও সহজে সমাধান করা সম্ভব।
 
@@ -401,7 +400,7 @@ WHERE order_date BETWEEN '2023-01-01' AND '2023-12-31';
 ### বিশেষ টিপস:
 - NULL মানগুলো অ্যাগ্রিগেশন ফাংশন দ্বারা উপেক্ষিত হয়
 - DISTINCT কীওয়ার্ড দিয়ে unique মান গণনা করা যায়
-- GROUP BY এর সাথে ব্যবহার করে গ্রুপ হিসাব করা যায়
+- GROUP BY এর সাথে ব্যবহার করে গ্রুপভিত্তিক হিসাব করা যায়
 - HAVING ক্লজ দিয়ে অ্যাগ্রিগেট ফলাফল ফিল্টার করা যায়
 
 ### FILTER clause:
