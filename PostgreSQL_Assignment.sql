@@ -105,9 +105,6 @@ VALUES (
         NULL
     );
 
-select * from rangers;
-
-delete from rangers where ranger_id = 5;
 -- Problem 1
 INSERT INTO
     rangers (name, region)
