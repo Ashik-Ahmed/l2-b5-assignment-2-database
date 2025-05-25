@@ -78,7 +78,7 @@ INSERT INTO
     )
 VALUES (
         1,
-        2,
+        1,
         'Peak Ridge',
         '2024-05-10 07:45:00',
         'Camera trap image captured'
